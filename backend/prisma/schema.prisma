@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  password String
+}
+
+model Tournament {
+  id      Int     @id @default(autoincrement())
+  status  String  @default("NOT_STARTED")
+  groups  Group[]
+}
+
+model Group {
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  tournamentId Int?
+  tournament Tournament? @relation(fields: [tournamentId], references: [id])
+  teams     Team[]
+  matches   Match[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Team {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  code        String   @unique
+  flag        String?
+  groupId     Int?
+  group       Group?   @relation(fields: [groupId], references: [id])
+  homeMatches Match[]  @relation("HomeTeam")
+  awayMatches Match[]  @relation("AwayTeam")
+  wonMatches  Match[]  @relation("WinnerTeam")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Match {
+  id        Int      @id @default(autoincrement())
+  teamAId   Int
+  teamBId   Int
+  teamA     Team     @relation("HomeTeam", fields: [teamAId], references: [id])
+  teamB     Team     @relation("AwayTeam", fields: [teamBId], references: [id])
+  groupId   Int?
+  group     Group?   @relation(fields: [groupId], references: [id])
+  phase     String
+  round     String
+  scoreA    Int?
+  scoreB    Int?
+  winnerId  Int?
+  winner    Team?    @relation("WinnerTeam", fields: [winnerId], references: [id])
+  status    String   @default("SCHEDULED")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

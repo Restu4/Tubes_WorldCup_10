@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin · World Cup Simulator</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">World <span>Cup</span></a>
+      <div class="nav-links">
+        <span id="tournamentStatus" style="font-size:12px;color:var(--gray-500)"></span>
+        <a href="index.html" class="btn btn-ghost btn-sm">Public</a>
+        <button id="logoutBtn" class="btn btn-danger btn-sm" style="display:none">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="loginSection">
+    <div class="login-box">
+      <h2>Admin Login</h2>
+      <form id="loginForm">
+        <div class="fg">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Enter admin password" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="adminPanel" style="display:none">
+    <div class="admin-layout">
+      <nav class="admin-sb">
+        <a href="#" class="active" data-section="dashboard">Dashboard</a>
+        <a href="#" data-section="teams">Teams</a>
+        <a href="#" data-section="matches">Matches</a>
+        <a href="#" data-section="tournament">Tournament</a>
+      </nav>
+      <div class="admin-c">
+        <div id="section-dashboard" class="admin-section active">
+          <div class="section-title">Dashboard</div>
+          <div class="stats-grid" id="adminStats"></div>
+          <div id="adminStandings"></div>
+        </div>
+
+        <div id="section-teams" class="admin-section">
+          <div class="section-title">Teams</div>
+          <div class="card">
+            <div class="card-hd">Add Team</div>
+            <div class="card-bd">
+              <form id="addTeamForm">
+                <div class="fr" style="flex-wrap:wrap">
+                  <div class="fg" style="flex:2;min-width:140px"><label>Name</label><input type="text" id="teamName" placeholder="e.g. Brazil" required></div>
+                  <div class="fg" style="flex:1;min-width:70px"><label>Code</label><input type="text" id="teamCode" placeholder="BRA" maxlength="3" required></div>
+                  <div class="fg" style="flex:1;min-width:60px"><label>Group</label><input type="text" id="teamGroup" placeholder="A" maxlength="1" required></div>
+                  <div class="fg" style="flex:2;min-width:120px"><label>Flag URL</label><input type="url" id="teamFlag" placeholder="https://..."></div>
+                </div>
+                <button type="submit" class="btn btn-success btn-sm">Add Team</button>
+              </form>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-hd">All Teams</div>
+            <div class="card-bd" id="teamsTable"></div>
+          </div>
+        </div>
+
+        <div id="section-matches" class="admin-section">
+          <div class="section-title">Match Results</div>
+          <div class="card">
+            <div class="card-hd">Input Scores</div>
+            <div class="card-bd" id="matchesTable"></div>
+          </div>
+        </div>
+
+        <div id="section-tournament" class="admin-section">
+          <div class="section-title">Tournament</div>
+          <div class="stats-grid">
+            <div class="stat-card"><button id="setupBtn" class="btn btn-primary" style="width:100%;margin-bottom:6px">Setup</button><div class="lbl">Generate group matches</div></div>
+            <div class="stat-card"><button id="advanceBtn" class="btn btn-success" style="width:100%;margin-bottom:6px">Advance</button><div class="lbl">Generate knockout</div></div>
+            <div class="stat-card"><button id="resetBtn" class="btn btn-danger" style="width:100%;margin-bottom:6px">Reset</button><div class="lbl">Clear all data</div></div>
+          </div>
+          <div class="card"><div class="card-bd" id="tournamentInfo"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="scoreModal" class="modal">
+    <div class="modal-c">
+      <div class="mh"><h2>Input Score</h2><button class="cl">&times;</button></div>
+      <form id="scoreForm">
+        <input type="hidden" id="matchId">
+        <div class="fr" style="justify-content:center;gap:20px;margin:16px 0">
+          <div style="text-align:center">
+            <div id="scoreATeam" style="font-weight:600;margin-bottom:6px;font-size:14px"></div>
+            <input type="number" id="scoreA" class="si" min="0" required>
+          </div>
+          <div style="font-size:18px;font-weight:700;color:var(--gray-400);align-self:center">VS</div>
+          <div style="text-align:center">
+            <div id="scoreBTeam" style="font-weight:600;margin-bottom:6px;font-size:14px"></div>
+            <input type="number" id="scoreB" class="si" min="0" required>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%">Save Result</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

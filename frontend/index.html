@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/bracket-theme.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">World <span>Cup</span></a>
+      <div class="nav-links">
+        <a href="#" class="active" data-page="dashboard">Dashboard</a>
+        <a href="#" data-page="standings">Standings</a>
+        <a href="#" data-page="matches">Matches</a>
+        <a href="#" data-page="bracket">Bracket</a>
+        <a href="admin.html" class="btn btn-primary btn-sm">Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div id="page-dashboard" class="page-section active">
+      <div class="section-title">Dashboard</div>
+      <div class="stats-grid" id="statsGrid"></div>
+      <div class="section-title" style="margin-top:var(--space-4)">Standings</div>
+      <div id="dashStandings"></div>
+    </div>
+
+    <div id="page-standings" class="page-section">
+      <div class="section-title">Standings</div>
+      <div id="standingsView"></div>
+    </div>
+
+    <div id="page-matches" class="page-section">
+      <div class="section-title">Matches</div>
+      <div class="filters" id="matchFilters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="GROUP">Group</button>
+        <button class="filter-btn" data-filter="KNOCKOUT">Knockout</button>
+        <button class="filter-btn" data-filter="FINISHED">Finished</button>
+        <button class="filter-btn" data-filter="SCHEDULED">Scheduled</button>
+      </div>
+      <div class="match-grid" id="matchesView"></div>
+    </div>
+
+    <div id="page-bracket" class="page-section">
+      <div class="bracket-wrap" id="bracketWrap">
+        <div class="bracket-root" id="bracketView"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/BracketUtils.js"></script>
+  <script src="js/flags.js"></script>
+  <script src="js/bracket-api.js"></script>
+  <script src="js/bracket-adapter.js"></script>
+  <script src="js/BracketLayout.js"></script>
+  <script src="js/BracketConnector.js"></script>
+  <script src="js/BracketRenderer.js"></script>
+  <script src="js/BracketEngine.js"></script>
+  <script src="js/bracket.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
