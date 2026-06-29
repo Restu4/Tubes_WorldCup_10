@@ -1,0 +1,7 @@
+{
+  "name": "worldcup-2026",
+  "private": true,
+  "scripts": {
+    "vercel-build": "cd backend && npm install && npx prisma generate"
+  }
+}

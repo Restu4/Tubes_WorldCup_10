@@ -1,4 +1,4 @@
-const API_BASE = 'https://worldcup-backend-sepia.vercel.app/api';
+const API_BASE = '/api';
 
 async function request(endpoint, options = {}) {
   const token = localStorage.getItem('token');
