@@ -123,6 +123,19 @@ body {
 }
 .nav-links a.btn-primary { color: #fff; }
 .nav-links a.btn-primary:hover { color: #fff; background: var(--blue-hover); }
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--gray-500);
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+.nav-toggle:hover { background: var(--gray-100); color: var(--navy); }
 
 /* ── Buttons ── */
 .btn {
@@ -631,10 +644,46 @@ tr.adv:hover td { background: #dcfce7; }
   .admin-sb a span { display: none; }
   .navbar > .container { padding: 0 var(--space-3); }
 }
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: var(--space-2) var(--space-3);
+    flex-direction: column;
+    gap: 2px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { padding: 10px 14px; border-radius: 8px; }
+  .nav-links a.btn-primary { margin-top: 4px; justify-content: center; }
+}
 @media (max-width: 640px) {
-  .navbar > .container { flex-direction: column; height: auto; padding: var(--space-3) var(--space-4); gap: var(--space-2); }
+  .navbar > .container { padding: 0 var(--space-3); }
   .stats-grid { grid-template-columns: 1fr 1fr; gap: var(--space-2); }
   .match-grid { grid-template-columns: 1fr; }
   .section-title { font-size: 14px; }
   .stat-card .val { font-size: 20px; }
+  .stat-card { padding: var(--space-3); }
+  .container { padding: 0 var(--space-3); }
+  main.container { padding: 0 var(--space-3); }
+  .sgroup table { font-size: 11px; }
+  .sgroup th, .sgroup td { padding: 4px 3px; }
+  .sgroup th:nth-child(n+3), .sgroup td:nth-child(n+3) { padding: 4px 2px; }
+  .match-card .sd { font-size: 20px; }
+  .match-card .team-flag { font-size: 24px; }
+  .match-card .tn { font-size: 11px; }
+}
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: var(--space-2); }
+  .stat-card .val { font-size: 18px; }
+  .match-card { padding: var(--space-3); }
+  .match-card .teams { gap: var(--space-2); }
+  .match-card .team-block { min-width: 60px; }
 }

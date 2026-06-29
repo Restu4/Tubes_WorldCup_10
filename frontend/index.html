@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/bracket-theme.css">
 </head>
 <body>
   <nav class="navbar">
     <div class="container">
       <a href="index.html" class="logo">World <span>Cup</span></a>
-      <div class="nav-links">
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      <div class="nav-links" id="navLinks">
         <a href="#" class="active" data-page="dashboard">Dashboard</a>
         <a href="#" data-page="standings">Standings</a>
         <a href="#" data-page="matches">Matches</a>

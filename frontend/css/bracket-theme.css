@@ -7,7 +7,13 @@
   margin-left: calc(-50vw + 50%);
   max-width: none;
   padding: 0 24px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 768px) {
+  #page-bracket.active { padding: 0 12px; }
 }
 
 .bracket-wrap {

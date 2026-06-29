@@ -9,6 +9,11 @@ function checkAuth() {
   if (authed) refreshAll();
 }
 
+// Nav toggle
+document.getElementById('navToggle')?.addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
 // Sidebar nav
 document.querySelectorAll('.admin-sb a').forEach(a => {
   a.addEventListener('click', e => {

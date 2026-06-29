@@ -47,7 +47,17 @@ document.querySelectorAll('.nav-links a[data-page]').forEach(a => {
     a.classList.add('active');
     document.querySelectorAll('.page-section').forEach(x => x.classList.remove('active'));
     document.getElementById('page-' + a.dataset.page).classList.add('active');
+    document.getElementById('navLinks').classList.remove('open');
   });
+});
+document.getElementById('navToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+document.addEventListener('click', e => {
+  const nav = document.getElementById('navLinks');
+  if (nav.classList.contains('open') && !e.target.closest('.navbar')) {
+    nav.classList.remove('open');
+  }
 });
 
 // Filters
