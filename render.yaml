@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: worldcup-backend
+    env: node
+    region: singapore
+    workingDirectory: backend
+    buildCommand: npm install && npx prisma generate
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: JWT_SECRET
+        value: worldcup2026-secret-key-change-in-production
+      - key: ADMIN_PASSWORD
+        value: admin123
+      - key: PORT
+        value: "3000"
+    healthCheckPath: /api/health
+    autoDeploy: true
